@@ -89,7 +89,7 @@ This project involves building an AI-powered content generation and moderation s
 
 # 1. Project Setup
 
-### 1.1 Prerequisites
+### Prerequisites
 
 Python 3.7+
 
@@ -97,10 +97,10 @@ Google Generative AI SDK (google.generativeai)
 
 getpass for secure API key entry
 
-# 1.2 Installation
+# Installation
 pip install google-generativeai
 
-# 1.3 API Configuration
+# API Configuration
 
 The API key is securely entered and used to authenticate with Google Gemini AI:
 import getpass
