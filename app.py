@@ -1,3 +1,12 @@
+# pip install---flask
+# pip install---google.generativeai
+# pip install---speech_recognition
+# pip install---moviepy
+
+# API_KEY = "your actual API key"
+
+# GenerativeModel.(gemini-1.5-flash)
+
 from flask import Flask, render_template, request, jsonify
 import os
 import google.generativeai as genai
