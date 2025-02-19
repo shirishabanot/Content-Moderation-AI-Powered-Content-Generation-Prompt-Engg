@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Content System</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 30px;
+            background: linear-gradient(45deg, #119c29, #64877b, #5bb70b, #a51616);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            color: #333;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 5px 5px 15px rgba(205, 10, 10, 0.2);
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 1px solid #b6c43a;
+            padding: 10px;
+        }
+        button {
+            padding: 12px;
+            margin-top: 10px;
+            background: #441498;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #06a13c;
+        }
+        select, input {
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #650e0e;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎬 AI-Powered Content System</h1>
+    <h2>Automate Video Processing, Content Moderation & AI-Generated Creativity</h2>
+    <div class="container">
+        <h3>📤 Upload Video</h3>
+        <input type="file" id="videoFile" accept="video/mp4">
+        <button onclick="uploadVideo()">Upload & Transcribe</button>
+        <br><br>
+
+        <h3>📜 AI-Generated Transcription</h3>
+        <textarea id="transcription" readonly></textarea>
+
+        <h3>🚦 Content Moderation Feedback</h3>
+        <textarea id="moderationFeedback" readonly></textarea>
+
+        <h3>🎭 Generate AI Content</h3>
+        <select id="task">
+            <option value="Podcast Script">Podcast Script</option>
+            <option value="Video Summary">Video Summary</option>
+            <option value="Presentation Script">Presentation Script</option>
+        </select>
+        <button onclick="generateContent()">Generate</button>
+
+        <h3>📄 AI-Generated Content</h3>
+        <textarea id="generatedContent" readonly></textarea>
+    </div>
+
+    <script>
+        function uploadVideo() {
+            let fileInput = document.getElementById("videoFile");
+            if (fileInput.files.length === 0) {
+                alert("Please upload a video file.");
+                return;
+            }
+
+            let formData = new FormData();
+            formData.append("video", fileInput.files[0]);
+
+            fetch("/transcribe", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("transcription").value = data.transcription;
+                document.getElementById("moderationFeedback").value = data.moderation_feedback;
+            })
+            .catch(error => console.error("Error:", error));
+        }
+
+        function generateContent() {
+            let task = document.getElementById("task").value;
+            let text = document.getElementById("transcription").value;
+
+            if (!text) {
+                alert("Please upload a video and generate transcription first.");
+                return;
+            }
+
+            fetch("/generate", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ task, text })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("generatedContent").value = data.generated_content;
+            })
+            .catch(error => console.error("Error:", error));
+        }
+    </script>
+</body>
+</html>
