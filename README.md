@@ -39,22 +39,22 @@ moviepy (for audio extraction from video)
 # 📂 Project Structure
 
 # /ai_video_transcription
-## │-- static/                 # Static files (CSS, JS, Images)
-## │-- templates/              # HTML Templates
-## │   ├── index.html          # Main UI Page
-## │-- app.py                  # Main Flask Application
-## │-- requirements.txt        # Dependencies List
-## │-- README.md               # Project Documentation
+### │-- static/                 # Static files (CSS, JS, Images)
+### │-- templates/              # HTML Templates
+### │   ├── index.html          # Main UI Page
+### │-- app.py                  # Main Flask Application
+### │-- requirements.txt        # Dependencies List
+### │-- README.md               # Project Documentation
 
 # Create a Virtual Environment (Optional but Recommended)
 python -m venv venv
 source venv/bin/activate   # On macOS/Linux
 venv\Scripts\activate      # On Windows
 
-## Set Up API Key
+# Set Up API Key
 
-## Replace API_KEY in app.py with your actual Google Gemini API key.
-## API_KEY = "your_actual_api_key"
+ Replace API_KEY in app.py with your actual Google Gemini API key.
+ API_KEY = "your_actual_api_key"
 
 ## Run the Flask Application
 python app.py
