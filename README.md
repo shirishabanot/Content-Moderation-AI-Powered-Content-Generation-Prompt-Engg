@@ -73,8 +73,154 @@ Open a web browser and navigate to:
 
 # 📝 Version Control & Best Practices
 
-Meaningful Commits: Ensure each commit message is clear (e.g., Added video processing logic).
 
-Branching: Follow a structured branching strategy (e.g., feature/content-generation).
 
-README & Documentation: Maintain proper documentation for easier collaboration.
+
+
+
+
+
+
+# Project Title: AI-Powered Content Generation & Moderation System
+
+### Introduction
+
+This project involves building an AI-powered content generation and moderation system using Google Gemini AI. The system will perform text summarization and classify user-generated content based on appropriateness. It includes functionalities such as content moderation, toxicity detection, and spam analysis.
+
+# 1. Project Setup
+
+### 1.1 Prerequisites
+
+Python 3.7+
+
+Google Generative AI SDK (google.generativeai)
+
+getpass for secure API key entry
+
+# 1.2 Installation
+pip install google-generativeai
+
+# 1.3 API Configuration
+
+The API key is securely entered and used to authenticate with Google Gemini AI:
+import getpass
+import google.generativeai as genai
+
+api_key = getpass.getpass("Enter your Gemini API key: ")
+genai.configure(api_key=api_key)
+
+# AI-Powered Content Generation
+
+### Text Summarization
+
+Objective: Summarize a given text efficiently.
+
+Implementation:
+
+A prompt is created instructing the model to summarize the given text.
+
+The AI generates a concise summary.
+def summarize_text(text):
+    """
+    Summarizes the input text using Google Gemini AI.
+    """
+    prompt = f"Summarize the following text:\n\n{text}"
+    response = model.generate_content(prompt)
+    return response.text.strip()
+
+ input_models:--
+ Google Gemini AI is a cutting-edge, multimodal artificial intelligence model...
+
+ # Content Moderation System Development
+
+### Content Classification
+
+Objective: Classify user-generated content based on appropriateness.
+
+Classification Categories:
+
+Allow (0-25%): Low or no inappropriate content.
+
+Flag for Review (25%-60%): Moderate inappropriate content.
+
+Block (>60%): High inappropriate content.
+
+## Code:-
+def moderate_content(text):
+    """
+    Classifies user-generated content based on appropriateness.
+    """
+    prompt = f"""Analyze the content and classify it as:
+    - Allow (0-25% inappropriate content)
+    - Flag for Review (25%-60%)
+    - Block (>60%)\n\nContent: "{text}"""
+    response = model.generate_content(prompt)
+    return response.text.strip()
+
+# Toxicity Scoring
+
+Objective: Assign a toxicity score (0-100) based on the level of inappropriate content.
+
+## Code:
+def content_scoring(text):
+    """
+    Assigns a toxicity score (0-100) based on inappropriate content levels.
+    """
+    prompt = f"""Assign a toxicity score (0-100) for the following content:\n\n"{text}"""
+    response = model.generate_content(prompt)
+    return response.text.strip()
+
+# Toxicity & Spam Detection
+
+Objective: Analyze text for toxicity level, spam probability, and provide a recommendation.
+
+## Code:-
+def detect_toxicity(text):
+    """
+    Detects toxicity and spam levels in text.
+    """
+    prompt = f"""Analyze the content for:
+    - Toxicity Level (Low, Medium, High)
+    - Spam Probability (Low, Medium, High)
+    - Recommendation (Allow, Review, Block)\n\nContent: "{text}"""
+    response = model.generate_content(prompt)
+    return response.text.strip()
+
+ ## Example Test Cases:-
+ test_contents = [
+    "This is a friendly and safe post about AI technology.",
+    "Some people use hate speech and offensive language online.",
+    "This message contains inappropriate and explicit content."
+]
+
+for i, content in enumerate(test_contents, 1):
+    print(f"\nModeration Result {i}:\n", moderate_content(content))
+    print(f"\nContent Score {i}:\n", content_scoring(content))
+    print(f"\nToxicity Analysis {i}:\n", detect_toxicity(content))
+
+
+# Test Cases & Results
+
+Provide 3-5 test cases covering:
+
+AI-generated text summarization.
+
+Content moderation classification.
+
+Toxicity and spam detection outputs.
+
+# Summary
+
+Implemented Text Summarization using Gemini AI.
+
+Developed a Content Moderation System with:
+
+Classification (Allow, Flag for Review, Block)
+
+Toxicity Scoring (0-100 scale)
+
+Toxicity & Spam Analysis
+
+Code structured professionally for clarity and scalability.
+Outcome: A robust AI-driven system that generates and moderates content efficiently, ensuring safe and appropriate user interactions.
+
