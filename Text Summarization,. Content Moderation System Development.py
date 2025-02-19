@@ -1,3 +1,7 @@
+# The API key is entered securely via getpass.
+# gemini-1.5-flash is chosen for fast response times.
+
+
 import os
 import getpass
 import google.generativeai as genai
