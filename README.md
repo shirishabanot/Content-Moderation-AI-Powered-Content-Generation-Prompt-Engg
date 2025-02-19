@@ -36,42 +36,42 @@ speech_recognition (for speech-to-text conversion)
 moviepy (for audio extraction from video)
 
 
-# 📂 Project Structure
+## 📂 Project Structure
 
-# /ai_video_transcription
-### │-- static/                 # Static files (CSS, JS, Images)
-### │-- templates/              # HTML Templates
-### │   ├── index.html          # Main UI Page
-### │-- app.py                  # Main Flask Application
-### │-- requirements.txt        # Dependencies List
-### │-- README.md               # Project Documentation
+#### /ai_video_transcription
+#### │-- static/                 # Static files (CSS, JS, Images)
+#### │-- templates/              # HTML Templates
+#### │   ├── index.html          # Main UI Page
+#### │-- app.py                  # Main Flask Application
+#### │-- requirements.txt        # Dependencies List
+#### │-- README.md               # Project Documentation
 
-# Create a Virtual Environment (Optional but Recommended)
+### Create a Virtual Environment (Optional but Recommended)
 python -m venv venv
 source venv/bin/activate   # On macOS/Linux
 venv\Scripts\activate      # On Windows
 
-# Set Up API Key
+### Set Up API Key
 
  Replace API_KEY in app.py with your actual Google Gemini API key.
  API_KEY = "your_actual_api_key"
 
-## Run the Flask Application
+### Run the Flask Application
 python app.py
 
-# Access the Web Interface
+### Access the Web Interface
 
 Open a web browser and navigate to:
-## http://127.0.0.1:5000/
+### http://127.0.0.1:5000/
 
-# 📌 How It Works
+### 📌 How It Works
 
 1️⃣ Upload a Video: Select an MP4 file from your system and upload it.
 2️⃣ Transcription Process: The backend extracts audio, converts it to text, and displays the transcript.
 3️⃣ Content Moderation: AI checks for inappropriate content and provides feedback.
 4️⃣ Generate AI Content: Users can select a task (e.g., Podcast Script, Summary) and generate AI-powered content.
 
-# 📝 Version Control & Best Practices
+### 📝 Version Control & Best Practices
 
 
 
