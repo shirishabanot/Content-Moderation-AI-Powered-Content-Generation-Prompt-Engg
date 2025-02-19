@@ -8,7 +8,7 @@ from moviepy import VideoFileClip
 app = Flask(__name__)
 
 # API Key Setup
-API_KEY = "AIzaSyCh_yhyQVHOt75ovOqjzPGv8A1buJm5UjQ" # Replace with your actual API key
+API_KEY = "your actual API key" # Replace with your actual API key
 if not API_KEY:
     raise ValueError("🔑 API Key not found! Set GEMINI_API_KEY in the environment.")
 
